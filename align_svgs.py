@@ -47,17 +47,17 @@ def make_header_row(y, title):
 def generate_terminal_block(fill_color):
     rows = [
         make_header_row(30, 'rohittyagii@rohittyagii'),
-        make_dotted_row(50, '. ', [('OS', 'key'), (':', None)], None, None, 'macOS, Linux, Windows'),
+        make_dotted_row(50, '. ', [('OS', 'key'), (':', None)], None, None, 'macOS, Linux, Android, iOS'),
         make_dotted_row(70, '. ', [('Uptime', 'key'), (':', None)], 'age_data_dots', 'age_data', '7 months, 23 days'),
-        make_dotted_row(90, '. ', [('Host', 'key'), (':', None)], None, None, 'Full-Stack & AI Developer'),
-        make_dotted_row(110, '. ', [('Kernel', 'key'), (':', None)], None, None, 'Python, Multimodal RAG & Deep Learning'),
-        make_dotted_row(130, '. ', [('IDE', 'key'), (':', None)], None, None, 'VS Code, Cursor, Antigravity'),
+        make_dotted_row(90, '. ', [('Host', 'key'), (':', None)], None, None, 'Full-Stack, Mobile & AI Engineer'),
+        make_dotted_row(110, '. ', [('Kernel', 'key'), (':', None)], None, None, 'Python, Flutter, RAG & Deep Learning'),
+        make_dotted_row(130, '. ', [('IDE', 'key'), (':', None)], None, None, 'VS Code, Cursor, Android Studio'),
         f'<tspan x="{TEXT_X}" y="150" class="cc">. </tspan>',
-        make_dotted_row(170, '. ', [('Languages', 'key'), ('.', None), ('Programming', 'key'), (':', None)], None, None, 'Python, TeX, Shell, JavaScript'),
-        make_dotted_row(190, '. ', [('Languages', 'key'), ('.', None), ('Computer', 'key'), (':', None)], None, None, 'TensorFlow, OpenCV, Flask, FAISS'),
+        make_dotted_row(170, '. ', [('Languages', 'key'), ('.', None), ('Programming', 'key'), (':', None)], None, None, 'Python, Dart, TeX, Shell, JavaScript'),
+        make_dotted_row(190, '. ', [('Languages', 'key'), ('.', None), ('Computer', 'key'), (':', None)], None, None, 'Flutter, TensorFlow, OpenCV, FAISS'),
         make_dotted_row(210, '. ', [('Languages', 'key'), ('.', None), ('Real', 'key'), (':', None)], None, None, 'English, Hindi'),
         f'<tspan x="{TEXT_X}" y="230" class="cc">. </tspan>',
-        make_dotted_row(250, '. ', [('Hobbies', 'key'), ('.', None), ('Software', 'key'), (':', None)], None, None, 'Deep Learning, Vision Models, RAG'),
+        make_dotted_row(250, '. ', [('Hobbies', 'key'), ('.', None), ('Software', 'key'), (':', None)], None, None, 'Mobile Apps, Deep Learning, Vision Models'),
         make_dotted_row(270, '. ', [('Hobbies', 'key'), ('.', None), ('Hardware', 'key'), (':', None)], None, None, 'Autonomous Drones, Swarm Robotics'),
         make_header_row(310, '- Contact'),
         make_dotted_row(330, '. ', [('Email', 'key'), ('.', None), ('Personal', 'key'), (':', None)], None, None, 'rohittyagii0108@gmail.com'),
@@ -66,9 +66,9 @@ def generate_terminal_block(fill_color):
         make_dotted_row(390, '. ', [('Discord', 'key'), (':', None)], None, None, 'rohittyagii'),
         make_dotted_row(410, '. ', [('GitHub', 'key'), (':', None)], None, None, 'rohittyagii'),
         make_header_row(450, '- GitHub Stats'),
-        f'<tspan x="{TEXT_X}" y="470" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> ... </tspan><tspan class="value" id="repo_data">4</tspan> {{<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">4</tspan>}} | <tspan class="key">Stars</tspan>:<tspan class="cc" id="star_data_dots"> ...................... </tspan><tspan class="value" id="star_data">0</tspan>',
-        f'<tspan x="{TEXT_X}" y="490" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc" id="commit_data_dots"> .......................... </tspan><tspan class="value" id="commit_data">44</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ......... </tspan><tspan class="value" id="follower_data">1</tspan>',
-        f'<tspan x="{TEXT_X}" y="510" class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>:<tspan class="cc" id="loc_data_dots"> ........ </tspan><tspan class="value" id="loc_data">9,278</tspan> ( <tspan class="addColor" id="loc_add">9,740</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> .... </tspan><tspan class="delColor" id="loc_del">462</tspan><tspan class="delColor">--</tspan> )'
+        f'<tspan x="{TEXT_X}" y="470" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> ... </tspan><tspan class="value" id="repo_data">6</tspan> {{<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">6</tspan>}} | <tspan class="key">Stars</tspan>:<tspan class="cc" id="star_data_dots"> ...................... </tspan><tspan class="value" id="star_data">0</tspan>',
+        f'<tspan x="{TEXT_X}" y="490" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc" id="commit_data_dots"> ......................... </tspan><tspan class="value" id="commit_data">127</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ......... </tspan><tspan class="value" id="follower_data">1</tspan>',
+        f'<tspan x="{TEXT_X}" y="510" class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>:<tspan class="cc" id="loc_data_dots"> ........ </tspan><tspan class="value" id="loc_data">53,974</tspan> ( <tspan class="addColor" id="loc_add">62,724</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">8,750</tspan><tspan class="delColor">--</tspan> )'
     ]
     return f'<text x="{TEXT_X}" y="30" fill="{fill_color}">\n' + '\n'.join(rows) + '\n</text>'
 
