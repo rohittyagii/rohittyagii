@@ -1,45 +1,8 @@
-<!-- HEADER -->
-<div align="center">
-
-```text
- █████╗ ██████╗       ██╗██╗   ██╗███╗   ██╗
-██╔══██╗██╔══██╗      ██║██║   ██║████╗  ██║
-███████║██████╔╝      ██║██║   ██║██╔██╗ ██║
-██╔══██║██╔══██╗██   ██║██║   ██║██║╚██╗██║
-██║  ██║██║  ██║╚█████╔╝╚██████╔╝██║ ╚████║
-╚═╝  ╚═╝╚═╝  ╚═╝ ╚════╝  ╚═════╝ ╚═╝  ╚═══╝
-```
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=7F77DD&center=true&vCenter=true&multiline=true&width=700&height=80&lines=Hey+there!+I'm+Arjun+%F0%9F%91%8B;MERN+Developer+%7C+iOS+Dev+%7C+UI+Craftsman" alt="Typing SVG" />
-
-<br/>
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/arjun-gupta-simpli/)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/simpliarjun)
-[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](#)
-[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](#)
-
-</div>
-
-<!-- ABOUT ME -->
-<img align="right" width="300" src="https://media.giphy.com/media/l41JRsph73VokN6ik/giphy.gif" alt="Spirited Away Dragon"/>
-
-### `> whoami`
-
-```js
-const arjun = {
-  roles:       ["MERN Stack Developer", "iOS Developer"],
-  focus:       ["Responsive UI", "Seamless UX", "Scalable Apps"],
-  webStack:    ["React", "Next.js", "Node.js", "MongoDB", "Express"],
-  mobileStack: ["Swift", "SwiftUI", "Xcode"],
-  styling:     ["TailwindCSS", "CSS3"],
-  languages:   ["TypeScript", "JavaScript", "Swift"],
-  state:       ["Redux", "Context API"],
-  currentMood: "Building something awesome 🐉",
-};
-```
-
-<br clear="both"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dark_mode.svg">
+  <source media="(prefers-color-scheme: light)" srcset="light_mode.svg">
+  <img alt="arjun@simpliarjun neofetch profile" src="dark_mode.svg" width="100%">
+</picture>
 
 ## 🛠️ Tech Arsenal
 
