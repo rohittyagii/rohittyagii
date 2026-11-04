@@ -10,22 +10,25 @@ import hashlib
 # Account permissions: read:Followers, read:Starring, read:Watching
 # Repository permissions: read:Commit statuses, read:Contents, read:Issues, read:Metadata, read:Pull Requests
 # Issues and pull requests permissions not needed at the moment, but may be used in the future
-HEADERS = {'authorization': 'token '+ os.environ.get('ACCESS_TOKEN', '')}
-USER_NAME = os.environ.get('USER_NAME', 'simpliarjun')
+HEADERS = {'authorization': 'token '+ os.environ.get('ACCESS_TOKEN', os.environ.get('GITHUB_TOKEN', ''))}
+USER_NAME = os.environ.get('USER_NAME', 'rohittyagii')
 QUERY_COUNT = {'user_getter': 0, 'follower_getter': 0, 'graph_repos_stars': 0, 'recursive_loc': 0, 'graph_commits': 0, 'loc_query': 0}
 
 
 def daily_readme(birthday):
     """
-    Returns the length of time since I was born
-    e.g. 'XX years, XX months, XX days'
+    Returns the length of time since birthday or account creation
+    e.g. 'XX years, XX months, XX days' or 'XX months, XX days'
     """
     diff = relativedelta.relativedelta(datetime.datetime.today(), birthday)
-    return '{} {}, {} {}, {} {}{}'.format(
-        diff.years, 'year' + format_plural(diff.years), 
-        diff.months, 'month' + format_plural(diff.months), 
-        diff.days, 'day' + format_plural(diff.days),
-        ' 🎂' if (diff.months == 0 and diff.days == 0) else '')
+    parts = []
+    if diff.years > 0:
+        parts.append(f"{diff.years} year{format_plural(diff.years)}")
+    if diff.months > 0:
+        parts.append(f"{diff.months} month{format_plural(diff.months)}")
+    if diff.days > 0 or not parts:
+        parts.append(f"{diff.days} day{format_plural(diff.days)}")
+    return ', '.join(parts) + (' 🎂' if (diff.months == 0 and diff.days == 0 and diff.years > 0) else '')
 
 
 def format_plural(unit):
@@ -322,12 +325,12 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     """
     tree = etree.parse(filename)
     root = tree.getroot()
-    justify_format(root, 'commit_data', commit_data, 27)
-    justify_format(root, 'star_data', star_data, 19)
-    justify_format(root, 'repo_data', repo_data, 6)
+    justify_format(root, 'commit_data', commit_data, 28)
+    justify_format(root, 'star_data', star_data, 23)
+    justify_format(root, 'repo_data', repo_data, 4)
     justify_format(root, 'contrib_data', contrib_data)
     justify_format(root, 'follower_data', follower_data, 10)
-    justify_format(root, 'loc_data', loc_data[2], 12)
+    justify_format(root, 'loc_data', loc_data[2], 13)
     justify_format(root, 'loc_add', loc_data[0])
     justify_format(root, 'loc_del', loc_data[1], 7)
     justify_format(root, 'age_data', age_data, 54)
@@ -444,12 +447,24 @@ if __name__ == '__main__':
     """
     print('Calculation times:')
     # define global variable for owner ID and calculate user's creation date
-    # e.g {'id': 'MDQ6VXNlcjU3MzMxMTM0'} and 2019-11-03T21:15:07Z for username 'Andrew6rant'
+    # e.g {'id': 'U_kgDOD_P65A'} and 2026-03-12T12:23:20Z for username 'rohittyagii'
     user_data, user_time = perf_counter(user_getter, USER_NAME)
     OWNER_ID, acc_date = user_data
     formatter('account data', user_time)
-    age_data, age_time = perf_counter(daily_readme, datetime.datetime(2003, 1, 1))
-    formatter('age calculation', age_time)
+    
+    # Calculate uptime either from USER_BIRTHDAY env or account creation date
+    bday_str = os.environ.get('USER_BIRTHDAY')
+    if bday_str:
+        try:
+            bday = datetime.datetime.strptime(bday_str, '%Y-%m-%d')
+        except ValueError:
+            bday = datetime.datetime.fromisoformat(acc_date.replace('Z', '+00:00')).replace(tzinfo=None)
+    else:
+        # Default to GitHub account creation date
+        bday = datetime.datetime.fromisoformat(acc_date.replace('Z', '+00:00')).replace(tzinfo=None)
+
+    age_data, age_time = perf_counter(daily_readme, bday)
+    formatter('uptime calculation', age_time)
     total_loc, loc_time = perf_counter(loc_query, ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
     formatter('LOC (cached)', loc_time) if total_loc[-1] else formatter('LOC (no cache)', loc_time)
     commit_data, commit_time = perf_counter(commit_counter, 7)
@@ -457,14 +472,6 @@ if __name__ == '__main__':
     repo_data, repo_time = perf_counter(graph_repos_stars, 'repos', ['OWNER'])
     contrib_data, contrib_time = perf_counter(graph_repos_stars, 'repos', ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
     follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
-
-    # several repositories that I've contributed to have since been deleted.
-    if OWNER_ID == {'id': 'MDQ6VXNlcjU3MzMxMTM0'}: # only calculate for user Andrew6rant
-        archived_data = add_archive()
-        for index in range(len(total_loc)-1):
-            total_loc[index] += archived_data[index]
-        contrib_data += archived_data[-1]
-        commit_data += int(archived_data[-2])
 
     for index in range(len(total_loc)-1): total_loc[index] = '{:,}'.format(total_loc[index]) # format added, deleted, and total LOC
 
